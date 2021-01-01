@@ -1,0 +1,44 @@
+
+.header-content
+    padding: 36px 10px 8px
+    font-size: 20px
+    text-transform: uppercase
+
+.task
+    height: 50px
+    max-width: 640px
+    width: calc(100% - 20px)
+    border: 1px solid #000000
+    border-radius: 9px
+    padding: 12px
+    box-sizing: border-box
+    margin: 10px
+    font-size: 15px
+    word-break: break-word
+    background-color: #242526
+.circe
+    background: transparent
+    height: 23px
+    width: 23px
+    border-radius: 100px
+    border: 0
+    margin: 1px
+    cursor: pointer
+    box-shadow: 0px 0px 3px 0px black
+    &:after
+        content: 'x'
+        color: white
+        font-size: 17px
+        color: #ddd
+        transition: 0.1s
+        opacity: 0
+    &:focus
+        outline: 0
+    &:hover
+        background: #383a3c
+    &:hover::after
+        opacity: 1
+
+@media (max-width: 700px)
+    .menu-panel
+        width: 0px
