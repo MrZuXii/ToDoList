@@ -249,6 +249,12 @@ textarea:focus {
   border: 1px solid #000000;
 }
 
+@media (max-width: 754px) {
+  .paneladd.active {
+    top: 190px;
+  }
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -270,7 +276,6 @@ main {
   margin: 0 auto;
   overflow-y: auto;
   max-width: 850px;
-  margin-bottom: 40px;
 }
 
 footer {
