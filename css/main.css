@@ -86,7 +86,7 @@ input[type="text"] {
   height: 24px;
   outline: 0;
   font-size: 13px;
-  width: 270px;
+  width: 110px;
   color: white;
   margin: auto 0;
   background-color: #242526;
@@ -137,7 +137,7 @@ input[type="text"]:focus {
   position: absolute;
   font-size: 12px;
   position: absolute;
-  left: -47px;
+  right: 0px;
   padding: 1px;
   border-radius: 4px;
   top: 42px;
