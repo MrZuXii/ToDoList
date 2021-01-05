@@ -272,7 +272,6 @@ main {
   display: -ms-flexbox;
   display: flex;
   height: calc(100vh - 50px);
-  width: calc(100% + 10px);
   background: #191919;
 }
 
