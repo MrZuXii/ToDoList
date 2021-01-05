@@ -16,7 +16,10 @@ const removeTask = (e) => {
     e.target.parentNode.remove();
     ReportTask.textContent = "usunięto zadanie";
     ReportTask.classList.add('active');
-    setTimeout(() => ReportTask.classList.remove('active'), 1000)
+    setTimeout(() => {
+        ReportTask.classList.remove('active')
+    }, 1000)
+
 }
 const BtnAddTask = (event) => {
     event.preventDefault()

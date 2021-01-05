@@ -372,8 +372,8 @@ footer {
   text-align: center;
   text-transform: uppercase;
   font-size: 14px;
-  -webkit-transform: translateY(70px);
-          transform: translateY(70px);
+  -webkit-transform: translateY(140px);
+          transform: translateY(140px);
   -webkit-transition: .3s;
   transition: .3s;
 }
