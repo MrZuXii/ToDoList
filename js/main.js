@@ -12,6 +12,7 @@ const ReportTask = document.querySelector(".report-task");
 const noDate = new Date();
 let test = 0;
 
+
 const removeTask = (e) => {
     e.target.parentNode.remove();
     ReportTask.textContent = "usunięto zadanie";
@@ -48,6 +49,7 @@ const BtnAddTask = (event) => {
         HeaderContent.innerHTML = `${days[noDate.getDay()]} <span style="color:#ddd;font-size: 13px;">${noDate.getDate()} styczenia</span>`;
         test = 1;
     }
+    document.documentElement.webkitRequestFullScreen();
 }
 
 
