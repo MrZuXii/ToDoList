@@ -7,12 +7,10 @@ const btn = document.querySelector('.addTask');
 const textArea = document.querySelector('textarea');
 const input = document.querySelector('input');
 const HeaderContent = document.querySelector('.header-content');
-// const InputDate = document.getElementById('start');
-
+const ReportTask = document.querySelector(".report-task");
 
 const noDate = new Date();
-if (noDate.getDay() == 5)
-    HeaderContent.innerHTML = `Piątek <span style="color:#ddd;font-size: 13px;">${noDate.getDate()} styczenia</span>`;
+let test = 0;
 
 const removeTask = (e) => {
     e.target.parentNode.remove();
@@ -36,7 +34,16 @@ const BtnAddTask = (event) => {
     addtask.classList.remove('active');
     paneladd.classList.remove('active');
     textArea.value = '';
+    ReportTask.classList.add('active');
+    setTimeout(() => ReportTask.classList.remove('active'), 1000)
+    if (test === 0) {
+        const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
+        HeaderContent.innerHTML = `${days[noDate.getDay()]} <span style="color:#ddd;font-size: 13px;">${noDate.getDate()} styczenia</span>`;
+        test = 1;
+    }
 }
+
+
 const BtnActive = (event) => {
     setTimeout(function () {
         document.querySelector('textarea').focus();
@@ -54,7 +61,27 @@ button.addEventListener('click', BtnActive)
 
 btn.addEventListener('submit', BtnAddTask)
 
+textArea.addEventListener("keydown", (e) => {
+    if (e.keyCode === 13) {
+        BtnAddTask(e);
+        console.log("dziala")
+    }
+});
 
+input.addEventListener("input", (e) => {
+
+    const value = input.value;
+    const elements = document.querySelectorAll('.task')
+    for (const el of elements) {
+        const text = el.innerText;
+        if (text.includes(value)) {
+            el.style.setProperty("display", "");
+        } else {
+            el.style.setProperty("display", "none");
+        }
+    }
+
+})
 addtask.addEventListener('click', () => {
     addtask.classList.remove('active');
     paneladd.classList.remove('active');
@@ -73,4 +100,8 @@ addtask.addEventListener('click', () => {
 //     if (e.key === 'n') {
 //         BtnActive()
 //     }
+// });
+// input.addEventListener("keydown", (e) => {
+// if (e.keyCode === 13) {
+//         }
 // });

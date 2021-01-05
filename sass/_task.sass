@@ -15,7 +15,6 @@
     margin: 10px
     font-size: 15px
     word-break: break-word
-    background-color: #242526
 .circe
     background: transparent
     height: 23px
@@ -24,7 +23,7 @@
     border: 0
     margin: 1px
     cursor: pointer
-    box-shadow: 0px 0px 3px 0px black
+    border: 1px solid #000
     &:after
         content: 'x'
         color: white
@@ -35,10 +34,25 @@
     &:focus
         outline: 0
     &:hover
-        background: #383a3c
+        background: #5965ff
     &:hover::after
         opacity: 1
-
+.report-task
+    width: 250px
+    background: #5965ff
+    position: absolute
+    bottom: 20px
+    z-index: 300
+    left: calc(50% - 125px)
+    border-radius: 6px
+    line-height: 35px
+    text-align: center
+    text-transform: uppercase
+    font-size: 14px
+    transform: translateY(70px)
+    transition: .3s
+    &.active
+        transform: translateY(0)
 @media (max-width: 700px)
     .menu-panel
         width: 0px

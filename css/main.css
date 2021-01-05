@@ -32,23 +32,23 @@ body {
 }
 
 .header-nav {
-  background: #191919;
+  background: #5966ff;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #000000;
-  -webkit-box-shadow: 0px 0px 7px 0px black;
-          box-shadow: 0px 0px 7px 0px black;
   position: relative;
   z-index: 100;
+  -webkit-box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
 .header-nav .home {
   color: white;
   line-height: 50px;
   margin: 0 20px;
-  font-size: 27px;
+  font-size: 21px;
+  text-transform: uppercase;
 }
 
 .header-nav div {
@@ -259,12 +259,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: calc(100vh - 51px);
+  height: calc(100vh - 50px);
   background: #191919;
 }
 
 .menu-panel {
-  width: 300px;
   border-right: 1px solid #000000;
   background: #151515;
 }
@@ -308,7 +307,6 @@ footer {
   margin: 10px;
   font-size: 15px;
   word-break: break-word;
-  background-color: #242526;
 }
 
 .circe {
@@ -319,8 +317,7 @@ footer {
   border: 0;
   margin: 1px;
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 3px 0px black;
-          box-shadow: 0px 0px 3px 0px black;
+  border: 1px solid #000;
 }
 
 .circe:after {
@@ -338,11 +335,34 @@ footer {
 }
 
 .circe:hover {
-  background: #383a3c;
+  background: #5965ff;
 }
 
 .circe:hover::after {
   opacity: 1;
+}
+
+.report-task {
+  width: 250px;
+  background: #5965ff;
+  position: absolute;
+  bottom: 20px;
+  z-index: 300;
+  left: calc(50% - 125px);
+  border-radius: 6px;
+  line-height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  -webkit-transform: translateY(70px);
+          transform: translateY(70px);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.report-task.active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 @media (max-width: 700px) {
