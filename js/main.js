@@ -14,6 +14,9 @@ let test = 0;
 
 const removeTask = (e) => {
     e.target.parentNode.remove();
+    ReportTask.textContent = "usunięto zadanie";
+    ReportTask.classList.add('active');
+    setTimeout(() => ReportTask.classList.remove('active'), 1000)
 }
 const BtnAddTask = (event) => {
     event.preventDefault()
@@ -34,6 +37,7 @@ const BtnAddTask = (event) => {
     addtask.classList.remove('active');
     paneladd.classList.remove('active');
     textArea.value = '';
+    ReportTask.textContent = "dodano nowe zadanie";
     ReportTask.classList.add('active');
     setTimeout(() => ReportTask.classList.remove('active'), 1000)
     if (test === 0) {
