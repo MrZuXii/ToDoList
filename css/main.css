@@ -59,7 +59,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100vw;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -86,7 +86,7 @@ input[type="text"] {
   height: 24px;
   outline: 0;
   font-size: 13px;
-  width: 110px;
+  width: 270px;
   color: white;
   margin: auto 0;
   background-color: #242526;
@@ -157,6 +157,18 @@ input[type="text"]:focus {
 
 .btn-plus:focus {
   outline: none;
+}
+
+@media (max-width: 700px) {
+  .header-nav .home {
+    margin: 0 15px;
+  }
+  input[type="text"] {
+    width: 110px;
+  }
+  .btn-plus {
+    margin: auto 20px;
+  }
 }
 
 .overflow {
