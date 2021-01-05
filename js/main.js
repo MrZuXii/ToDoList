@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const addtask = document.querySelector('.overflow');
 const button = document.querySelector('.btn-plus');
-const app = document.querySelector('.content-panel');
+const app = document.querySelector('ul');
 const paneladd = document.querySelector('.paneladd');
 const btn = document.querySelector('.addTask');
 const textArea = document.querySelector('textarea');
@@ -10,18 +10,21 @@ const HeaderContent = document.querySelector('.header-content');
 const ReportTask = document.querySelector(".report-task");
 
 const noDate = new Date();
+const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
 let test = 0;
+let godzina = 0;
 
+const TaskReport = (txt) => {
+    ReportTask.classList.add('active');
+    ReportTask.textContent = txt
+    setTimeout(() => ReportTask.classList.remove('active'), 1000)
+}
 
 const removeTask = (e) => {
     e.target.parentNode.remove();
-    ReportTask.textContent = "usunięto zadanie";
-    ReportTask.classList.add('active');
-    setTimeout(() => {
-        ReportTask.classList.remove('active')
-    }, 1000)
-
+    TaskReport("usunięto zadanie")
 }
+
 const BtnAddTask = (event) => {
     event.preventDefault()
     if (textArea.value == '') {
@@ -29,24 +32,32 @@ const BtnAddTask = (event) => {
         return;
     }
     // HeaderContent.innerHTML = InputDate.value;
-    const div = document.createElement('div');
-    div.classList.add("task");
+    const li = document.createElement('li');
+    li.classList.add("task");
     const btnCrt = document.createElement('button')
-    app.appendChild(div);
+    app.appendChild(li);
     btnCrt.classList.add('circe')
 
-    div.innerHTML = '<button class = "circe" > </button> ' + textArea.value;
-    div.querySelector('button').addEventListener('click', removeTask);
+    li.innerHTML = `<button class = "circe" ><i class="fas fa-check"></i> </button> <p>${textArea.value}</p><i class="fas fa-trash-alt"></i>`;
+    li.querySelector('button').addEventListener('click', (e) => {
+        TaskReport("ukończono zadanie")
+        if (li.style.textDecoration === "line-through")
+            li.style.textDecoration = "none";
+        else
+            li.style.textDecoration = "line-through";
+        console.log("dziala");
+    })
+    li.querySelector('.fa-trash-alt').addEventListener('click', removeTask);
 
     addtask.classList.remove('active');
     paneladd.classList.remove('active');
     textArea.value = '';
-    ReportTask.textContent = "dodano nowe zadanie";
-    ReportTask.classList.add('active');
-    setTimeout(() => ReportTask.classList.remove('active'), 1000)
+    TaskReport("dodano nowe zadanie")
+    let InputData = document.querySelector('input#start').value;
+    godzina = new Date(document.querySelector('input#start').value);
     if (test === 0) {
-        const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
-        HeaderContent.innerHTML = `${days[noDate.getDay()]} <span style="color:#ddd;font-size: 13px;">${noDate.getDate()} styczenia</span>`;
+
+        HeaderContent.innerHTML = `${days[godzina.getDay()]} <span style="color:#ddd;font-size: 13px;">${parseInt(InputData.slice(8))} styczenia</span>`;
         test = 1;
     }
 }
@@ -76,6 +87,7 @@ textArea.addEventListener("keydown", (e) => {
     }
 });
 
+// Wyszukiwarka
 input.addEventListener("input", (e) => {
 
     const value = input.value;
@@ -90,26 +102,16 @@ input.addEventListener("input", (e) => {
     }
 
 })
+
+// Aktualna Data w Inpucie Data
 addtask.addEventListener('click', () => {
     addtask.classList.remove('active');
     paneladd.classList.remove('active');
 
 })
-
-
-
-// if (('input').focus())
-// btn.addEventListener('keypress', function (e) {
-//     if (e.key === 'Enter') {
-//         BtnAddTask(e);
-//     }
-// });
-// window.addEventListener('keypress', function (e) {
-//     if (e.key === 'n') {
-//         BtnActive()
-//     }
-// });
-// input.addEventListener("keydown", (e) => {
-// if (e.keyCode === 13) {
-//         }
-// });
+Date.prototype.toDateInputValue = (function () {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0, 10);
+});
+document.querySelector('input#start').value = new Date().toDateInputValue();

@@ -5,43 +5,45 @@
     text-transform: uppercase
 
 .task
-    height: 50px
     max-width: 640px
     width: calc(100% - 20px)
     border: 1px solid #000000
     border-radius: 9px
     padding: 12px
+    -webkit-box-sizing: border-box
     box-sizing: border-box
-    margin: 10px
+    margin: 10px 0
     font-size: 15px
     word-break: break-word
+    display: flex
+
+    p
+        flex-grow: 1
+        margin-left: 12px
+        margin: auto 13px
 .circe
     background: transparent
     height: 23px
-    width: 23px
+    min-width: 23px
     border-radius: 100px
     border: 0
     margin: 1px
     cursor: pointer
     border: 1px solid #000
-    &:after
-        content: 'x'
-        color: white
-        font-size: 17px
-        color: #ddd
-        transition: 0.1s
-        opacity: 0
+    color: #ffffff00
+    font-size: 15px
+    line-height: 100%
+    margin: auto 0
     &:focus
         outline: 0
     &:hover
         background: #5965ff
-    &:hover::after
-        opacity: 1
+        color: black
 .report-task
     width: 250px
     background: #5965ff
     position: absolute
-    bottom: 20px
+    bottom: -35px
     z-index: 300
     left: calc(50% - 125px)
     border-radius: 6px
@@ -51,7 +53,16 @@
     font-size: 14px
     transition: .3s
     &.active
-        bottom: -35px
+        bottom: 20px
+.fa-trash-alt
+    float: right
+    font-size: 20px
+    line-height: 24px !important
+    color: white
+    cursor: pointer
+    margin: auto 0
+    &:hover
+        color: #5966ff
 @media (max-width: 700px)
     .menu-panel
         width: 0px
