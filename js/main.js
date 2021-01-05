@@ -49,7 +49,6 @@ const BtnAddTask = (event) => {
         HeaderContent.innerHTML = `${days[noDate.getDay()]} <span style="color:#ddd;font-size: 13px;">${noDate.getDate()} styczenia</span>`;
         test = 1;
     }
-    document.documentElement.webkitRequestFullScreen();
 }
 
 
