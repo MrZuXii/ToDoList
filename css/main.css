@@ -154,11 +154,6 @@ input[type="text"]:focus {
   background: #242526;
 }
 
-.btn-plus:hover:after {
-  content: 'Dodaj Nowe Zadanie';
-  visibility: visible;
-}
-
 .btn-plus:focus {
   outline: none;
 }
