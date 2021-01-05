@@ -373,7 +373,6 @@ footer {
   font-size: 14px;
   -webkit-transition: .3s;
   transition: .3s;
-  margin: 0 0 -35px 0;
 }
 
 .report-task.active {
