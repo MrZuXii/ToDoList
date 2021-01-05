@@ -83,7 +83,7 @@ body {
 .search i {
   line-height: 36px;
   font-size: 15px;
-  color: #DADAD9;
+  color: #8a8a8a;
   position: absolute;
   right: 15px;
 }
@@ -93,28 +93,28 @@ input[type="text"] {
   outline: 0;
   font-size: 13px;
   width: 270px;
-  color: white;
+  color: black;
   margin: auto 0;
-  background-color: #242526;
-  padding: 5px 30px 5px 10px;
+  background-color: white;
+  padding: 4px 30px 4px 10px;
   border-radius: 100px;
-  border: 1px solid transparent;
+  border: 1px solid #000000;
 }
 
 input[type="text"]::-webkit-input-placeholder {
-  color: #c0c0c0;
+  color: #8a8a8a;
 }
 
 input[type="text"]:-ms-input-placeholder {
-  color: #c0c0c0;
+  color: #8a8a8a;
 }
 
 input[type="text"]::-ms-input-placeholder {
-  color: #c0c0c0;
+  color: #8a8a8a;
 }
 
 input[type="text"]::placeholder {
-  color: #c0c0c0;
+  color: #8a8a8a;
 }
 
 input[type="text"]:focus {
@@ -325,7 +325,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #22222275;
+  background: #191919;
 }
 
 .task p {
@@ -349,6 +349,7 @@ footer {
   font-size: 15px;
   line-height: 100%;
   margin: auto 0;
+  background: white;
 }
 
 .circe:focus {
@@ -356,8 +357,7 @@ footer {
 }
 
 .circe:hover {
-  background: #000000;
-  color: white;
+  color: black;
 }
 
 .report-task {
