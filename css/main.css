@@ -12,22 +12,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #191919;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #242526;
-  border-left: 1px solid #000000;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #191919;
+  border-radius: 7px;
 }
 
 @media (max-width: 700px) {
@@ -52,8 +42,10 @@ body {
   color: white;
   line-height: 50px;
   margin: 0 20px;
-  font-size: 21px;
+  font-size: 10.5px;
   text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .header-nav div {
@@ -128,7 +120,7 @@ input[type="text"]:focus {
   background: transparent;
   color: white;
   border-radius: 3px;
-  font-size: 32px;
+  font-size: 25px;
   line-height: 32px;
   cursor: pointer;
   position: relative;
@@ -153,10 +145,6 @@ input[type="text"]:focus {
 
 .btn-plus:hover {
   background: #242526;
-}
-
-.btn-plus:focus {
-  outline: none;
 }
 
 @media (max-width: 700px) {
@@ -240,10 +228,6 @@ input[type="text"]:focus {
   background: #383a3cdb;
 }
 
-.btn-addtask:focus {
-  outline: none;
-}
-
 textarea {
   color: #dadada;
   resize: none;
@@ -272,6 +256,7 @@ main {
   display: -ms-flexbox;
   display: flex;
   height: calc(100vh - 50px);
+  background: #00000026;
 }
 
 .menu-panel {
@@ -290,18 +275,6 @@ main {
 ul {
   list-style: none;
   margin-top: 20px;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  margin: auto;
-  left: 0;
-  right: 0;
-  font-size: 20px;
-  padding: 10px;
-  color: #c0c0c0;
 }
 
 .header-content {

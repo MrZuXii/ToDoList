@@ -16,13 +16,15 @@
     <div id="app">
         <header class="header-nav">
             <div>
-                <h1 class="home">ToDoList</h1>
+                <a class="home" href="#">
+                    <h1>ToDoList</h1>
+                </a>
                 <div>
-                    <form class="search" action="">
+                    <form class="search" action="" title="[/] Wyszukaj Zadanie">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Wyszukaj">
+                        <input type="text" onfocus="this.value=''" placeholder="Wyszukaj">
                     </form>
-                    <button class="btn-plus">+</button>
+                    <button class="btn-plus" title="[j] Dodaj Zadanie">+</button>
                 </div>
             </div>
         </header>
@@ -32,17 +34,12 @@
             </div>
             <div class="content-panel">
                 <header class="header-content"></header>
-                <ul></ul>
-
-                <!-- <div class="task">
-                    <button class="circe"></button>
-                    gfgfd
+                <!-- <div class="NoTask">
+                    <i class="fas fa-clipboard-list"></i>
                 </div> -->
+                <ul></ul>
             </div>
         </main>
-        <!-- <footer>
-            <h5>Wykonał Kamil Bieniek</h2>
-        </footer> -->
     </div>
 
 
@@ -53,7 +50,7 @@
         <form class="addTask" action="">
             <div class="text">
                 <label class="btnadd" for="btnadd">Podaj treść zadania</label>
-                <textarea placeholder="Wpisz np: Zrobie Zakupy" name="btnadd"></textarea>
+                <textarea placeholder="Wpisz np: Zrobić Zakupy" name="btnadd"></textarea>
             </div>
             <div class="add"></div>
             <input type="date" id="start" name="trip-start" value="2020-07-22" min="2018-01-01" max="2022-12-31" style="

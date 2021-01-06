@@ -38,7 +38,7 @@ const BtnAddTask = (event) => {
     app.appendChild(li);
     btnCrt.classList.add('circe')
 
-    li.innerHTML = `<button class = "circe" ><i class="fas fa-check"></i> </button> <p>${textArea.value}</p><i class="fas fa-trash-alt"></i>`;
+    li.innerHTML = `<button class = "circe" title="Zaznacz Zadanie Wykonane"><i class="fas fa-check"></i> </button> <p>${textArea.value}</p><i class="fas fa-trash-alt" title="Usuń Zadanie"></i>`;
     li.querySelector('button').addEventListener('click', (e) => {
         TaskReport("ukończono zadanie")
         if (li.style.textDecoration === "line-through")
@@ -83,7 +83,6 @@ btn.addEventListener('submit', BtnAddTask)
 textArea.addEventListener("keydown", (e) => {
     if (e.keyCode === 13) {
         BtnAddTask(e);
-        console.log("dziala")
     }
 });
 
@@ -115,3 +114,19 @@ Date.prototype.toDateInputValue = (function () {
     return local.toJSON().slice(0, 10);
 });
 document.querySelector('input#start').value = new Date().toDateInputValue();
+const Test = (e) => {
+    switch (e.target.tagName) {
+        case "INPUT":
+        case "SELECT":
+        case "TEXTAREA":
+            return;
+    }
+    switch (e.keyCode) {
+        case 74:
+            BtnActive();
+        case 191:
+            input.focus();
+            e.preventDefault();
+    }
+}
+window.addEventListener("keydown", Test)
