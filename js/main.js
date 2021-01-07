@@ -1,7 +1,6 @@
 const form = document.querySelector('form');
 const addtask = document.querySelector('.overflow');
 const button = document.querySelector('.btn-plus');
-const app = document.querySelector('ul');
 const paneladd = document.querySelector('.paneladd');
 const btn = document.querySelector('.addTask');
 const textArea = document.querySelector('textarea');
@@ -13,6 +12,7 @@ const noDate = new Date();
 const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
 let test = 0;
 let godzina = 0;
+let Tasks = 0;
 
 const TaskReport = (txt) => {
     ReportTask.classList.add('active');
@@ -23,8 +23,22 @@ const TaskReport = (txt) => {
 const removeTask = (e) => {
     e.target.parentNode.remove();
     TaskReport("usunięto zadanie")
+    NoTask(-1);
 }
+const NoTask = (a) => {
+    const NoTask = document.querySelector(".NoTask");
+    Tasks = Tasks + a;
+    if (Tasks <= 0) {
+        NoTask.style.display = "block"
+        HeaderContent.style.display = "none"
+    } else {
+        NoTask.style.display = "none"
+        HeaderContent.style.display = "block"
+    }
 
+
+
+}
 const BtnAddTask = (event) => {
     event.preventDefault()
     if (textArea.value == '') {
@@ -35,7 +49,7 @@ const BtnAddTask = (event) => {
     const li = document.createElement('li');
     li.classList.add("task");
     const btnCrt = document.createElement('button')
-    app.appendChild(li);
+    document.querySelector('ul').appendChild(li);
     btnCrt.classList.add('circe')
 
     li.innerHTML = `<button class = "circe" title="Zaznacz Zadanie Wykonane"><i class="fas fa-check"></i> </button> <p>${textArea.value}</p><i class="fas fa-trash-alt" title="Usuń Zadanie"></i>`;
@@ -60,6 +74,7 @@ const BtnAddTask = (event) => {
         HeaderContent.innerHTML = `${days[godzina.getDay()]} <span style="color:#ddd;font-size: 13px;">${parseInt(InputData.slice(8))} styczenia</span>`;
         test = 1;
     }
+    NoTask(1);
 }
 
 
