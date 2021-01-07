@@ -15,16 +15,16 @@
 <body>
     <div id="app">
         <header class="header-nav">
-            <div>
+            <div class="header-contain">
                 <a class="home" href="#">
                     <h1>ToDoList</h1>
                 </a>
-                <div>
-                    <form class="search" action="" title="[/] Wyszukaj Zadanie">
+                <div class="header-contain">
+                    <form class="search" action="" data-toggle="tooltip" key="/" tooltip="Wyszukaj Zadanie">
                         <i class="fab fa-sistrix"></i>
-                        <input type="text" onfocus="this.value=''" placeholder="Wyszukaj">
+                        <input type="text" placeholder="Wyszukaj">
                     </form>
-                    <button class="btn-plus" title="[j] Dodaj Zadanie">+</button>
+                    <button class="btn-plus" data-toggle="tooltip" key="J" tooltip="Dodań Zadanie">+</button>
                 </div>
             </div>
         </header>
@@ -63,6 +63,7 @@
             <button class="btn-addtask">Dodaj</button>
         </form>
     </div>
+    <div class="tootip">Dodaj Zadanie<span>J</span></div>
     <div class="report-task"></div>
 
     <script src="js/main.js"></script>

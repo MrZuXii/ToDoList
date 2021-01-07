@@ -13,6 +13,22 @@ const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Pi�
 let test = 0;
 let godzina = 0;
 let Tasks = 0;
+const toolipse = document.querySelectorAll('[data-toggle="tooltip"]');
+const tootip = function () {
+    const tootip = document.querySelector('.tootip');
+    let element = this.getBoundingClientRect()
+    tootip.innerHTML = this.getAttribute("tooltip") + `<span>${this.getAttribute("key")}</span>`
+    tootip.style.display = "block";
+    tootip.style.cssText = `top: ${element.y + 40}px; left: ${element.x - (tootip.offsetWidth- element.width) / 2}px; display:block;`;
+
+}
+for (let i = 0; i < toolipse.length; i++) {
+    toolipse[i].addEventListener("mouseover", tootip);
+    toolipse[i].addEventListener("mouseout", function () {
+        let element = this.getBoundingClientRect()
+        document.querySelector('.tootip').style.cssText = "display: none";
+    })
+}
 
 const TaskReport = (txt) => {
     ReportTask.classList.add('active');
@@ -102,20 +118,20 @@ textArea.addEventListener("keydown", (e) => {
 });
 
 // Wyszukiwarka
-input.addEventListener("input", (e) => {
-
+const SearchTasks = (e) => {
     const value = input.value;
     const elements = document.querySelectorAll('.task')
     for (const el of elements) {
-        const text = el.innerText;
-        if (text.includes(value)) {
+        const text = el.innerText.toLocaleLowerCase();
+        if (text.includes(value.toLocaleLowerCase())) {
             el.style.setProperty("display", "");
         } else {
             el.style.setProperty("display", "none");
         }
     }
+}
+input.addEventListener("input", SearchTasks)
 
-})
 
 // Aktualna Data w Inpucie Data
 addtask.addEventListener('click', () => {
