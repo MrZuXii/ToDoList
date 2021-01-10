@@ -16,6 +16,7 @@ let Tasks = 0;
 const toolipse = document.querySelectorAll('[data-toggle="tooltip"]');
 const tootip = function () {
     const tootip = document.querySelector('.tootip');
+    tootip.classList.add("active");
     let element = this.getBoundingClientRect()
     tootip.innerHTML = this.getAttribute("tooltip") + `<span>${this.getAttribute("key")}</span>`
     tootip.style.display = "block";
@@ -26,6 +27,8 @@ for (let i = 0; i < toolipse.length; i++) {
     toolipse[i].addEventListener("mouseover", tootip);
     toolipse[i].addEventListener("mouseout", function () {
         let element = this.getBoundingClientRect()
+        const tootip = document.querySelector('.tootip');
+        tootip.classList.remove("active");
         document.querySelector('.tootip').style.cssText = "display: none";
     })
 }

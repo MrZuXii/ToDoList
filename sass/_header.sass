@@ -85,6 +85,15 @@ input[type="text"]
         border-width: 7px
         border-style: solid
         border-color: transparent transparent#5d5d5d transparent
+    &.active
+        opacity: 0
+        animation: tooltip .2s .01s
+        animation-fill-mode: forwards
+@keyframes tooltip
+    0%
+        opacity: 0
+    100%
+        opacity: 1
 
 @media (max-width: 700px)
     .header-nav

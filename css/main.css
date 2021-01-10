@@ -164,6 +164,32 @@ input[type="text"]:focus {
   border-color: transparent transparent #5d5d5d transparent;
 }
 
+.tootip.active {
+  opacity: 0;
+  -webkit-animation: tooltip .2s .01s;
+          animation: tooltip .2s .01s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes tooltip {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tooltip {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 700px) {
   .header-nav .home {
     margin: 0 15px;
