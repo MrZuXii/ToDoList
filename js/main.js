@@ -1,3 +1,5 @@
+//--- Zmienne ---//
+
 const form = document.querySelector('form');
 const addtask = document.querySelector('.overflow');
 const button = document.querySelector('.btn-plus');
@@ -10,9 +12,14 @@ const ReportTask = document.querySelector(".report-task");
 
 const noDate = new Date();
 const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
+const months = ['Styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
 let test = 0;
-let godzina = 0;
+let = 0;
 let Tasks = 0;
+let DivDateInput = [];
+
+//--- Zmienne ---//
+
 const toolipse = document.querySelectorAll('[data-toggle="tooltip"]');
 const tootip = function () {
     const tootip = document.querySelector('.tootip');
@@ -32,7 +39,7 @@ for (let i = 0; i < toolipse.length; i++) {
         document.querySelector('.tootip').style.cssText = "display: none";
     })
 }
-
+//--- Wyświetlanie Komunikatów ---//
 const TaskReport = (txt) => {
     ReportTask.classList.add('active');
     ReportTask.textContent = txt
@@ -40,10 +47,21 @@ const TaskReport = (txt) => {
 }
 
 const removeTask = (e) => {
-    e.target.parentNode.remove();
+    TaskParent = e.target.parentNode;
     TaskReport("usunięto zadanie")
     NoTask(-1);
+    let licznik = TaskParent.parentNode.getAttribute("tasks");
+    const DataSelector = document.querySelector(`[data="${TaskParent.parentNode.getAttribute("data")}"]`)
+    DataSelector.setAttribute("tasks", --licznik);
+    if (licznik <= 0) {
+        DataSelector.remove()
+        DivDateInput.pop(DivDateInput.indexOf(DataSelector.getAttribute("data")))
+    }
+    e.target.parentNode.remove();
 }
+//--- Wyświetlanie Komunikatów ---//
+
+//--- Brak Zadań jeśli tak to wyświetl Brak zadań jeśli nie to wyświetl "Ikonke" ---//
 const NoTask = (a) => {
     const NoTask = document.querySelector(".NoTask");
     Tasks = Tasks + a;
@@ -54,21 +72,53 @@ const NoTask = (a) => {
         NoTask.style.display = "none"
         HeaderContent.style.display = "block"
     }
-
-
-
 }
+//--- Brak Zadań jeśli tak to wyświetl Brak zadań jeśli nie to wyświetl "Ikonke" ---//
+
+
 const BtnAddTask = (event) => {
     event.preventDefault()
     if (textArea.value == '') {
         alert("Wpisz coś")
         return;
     }
-    // HeaderContent.innerHTML = InputDate.value;
+    if (DivDateInput.indexOf(document.querySelector('input#start').value) != -1) {
+        console.log("Xd");
+    } else {
+        const DivDate = document.createElement("div")
+        DivDateInput.push(document.querySelector('input#start').value);
+        DivDate.setAttribute('data', DivDateInput[DivDateInput.length - 1]);
+        DivDate.setAttribute('tasks', 0);
+        document.querySelector('.content-panel').appendChild(DivDate);
+
+        const HeaderDate = document.createElement('header')
+        HeaderDate.classList.add("header-content");
+
+        let InputData = new Date(document.querySelector('input#start').value);
+        let day = InputData.getDate();
+        let DayOfWeek = InputData.getDay();
+        let month = InputData.getMonth() + 1;
+        let year = InputData.getFullYear();
+        HeaderDate.innerHTML = `${days[DayOfWeek]} <span style="color:#ddd;font-size: 13px;">${day} ${months[month]}</span>`;
+        document.querySelector(`[data="${DivDateInput[DivDateInput.length - 1]}"]`).appendChild(HeaderDate);
+    }
+
+
+
+
+
     const li = document.createElement('li');
     li.classList.add("task");
+    for (const el of DivDateInput) { //el to nazwa zmiennej wymyślona przez nas
+        if (el === document.querySelector('input#start').value) {
+            document.querySelector(`[data="${el}"]`).appendChild(li);
+            let licznik = document.querySelector(`[data="${el}"]`).getAttribute("tasks");
+            document.querySelector(`[data="${el}"]`).setAttribute("tasks", ++licznik);
+        }
+
+    }
     const btnCrt = document.createElement('button')
-    document.querySelector('ul').appendChild(li);
+
     btnCrt.classList.add('circe')
 
     li.innerHTML = `<button class = "circe" title="Zaznacz Zadanie Wykonane"><i class="fas fa-check"></i> </button> <p>${textArea.value}</p><i class="fas fa-trash-alt" title="Usuń Zadanie"></i>`;
@@ -86,13 +136,7 @@ const BtnAddTask = (event) => {
     paneladd.classList.remove('active');
     textArea.value = '';
     TaskReport("dodano nowe zadanie")
-    let InputData = document.querySelector('input#start').value;
-    godzina = new Date(document.querySelector('input#start').value);
-    if (test === 0) {
 
-        HeaderContent.innerHTML = `${days[godzina.getDay()]} <span style="color:#ddd;font-size: 13px;">${parseInt(InputData.slice(8))} styczenia</span>`;
-        test = 1;
-    }
     NoTask(1);
 }
 
